@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,100:7aa2f7&height=220&section=header&text=Aarush%20Mehta&fontSize=58&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Aspiring%20ML%2FAI%20Engineer%20%E2%80%A2%20Agentic%20AI,%20RAG%20%26%20Computer%20Vision&descAlignY=55&descSize=17" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,100:7aa2f7&height=220&section=header&text=Aarush%20Mehta&fontSize=58&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Aspiring%20ML%2FAI%20Engineer%20%E2%80%A2%20Agentic%20AI,%20RAG,%20Computer%20Vision&descAlignY=55&descSize=17" width="100%"/>
 
 <a href="https://linkedin.com/in/aarushmehta">
   <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
@@ -59,22 +59,37 @@
 
 ### 🚀 Featured Projects
 
-<table align="center">
+<table align="center" width="100%">
 <tr>
-<td align="center" width="33%">
-<a href="https://github.com/mehtaaarush/agentic-rag-assistant">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=mehtaaarush&repo=agentic-rag-assistant&theme=tokyonight&hide_border=true" width="100%"/>
-</a>
+<td width="33%" valign="top">
+
+**[🤖 Agentic RAG Research Assistant](https://github.com/mehtaaarush/agentic-rag-assistant)**
+Agent that routes between FAISS retrieval and live web search, with a custom LLM-as-judge evaluation harness.
+`Python` `LangChain` `LangGraph` `FAISS` `Gemini`
+
+![Stars](https://img.shields.io/github/stars/mehtaaarush/agentic-rag-assistant?style=flat-square&color=7aa2f7)
+![Top Lang](https://img.shields.io/github/languages/top/mehtaaarush/agentic-rag-assistant?style=flat-square&color=1a1b27)
+
 </td>
-<td align="center" width="33%">
-<a href="https://github.com/mehtaaarush/docintel">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=mehtaaarush&repo=docintel&theme=tokyonight&hide_border=true" width="100%"/>
-</a>
+<td width="33%" valign="top">
+
+**[📄 DocIntel](https://github.com/mehtaaarush/docintel)**
+Full-stack AI document intelligence app — upload docs, chat with them, get cited answers.
+`Next.js` `FastAPI` `PostgreSQL` `FAISS` `Gemini`
+
+![Stars](https://img.shields.io/github/stars/mehtaaarush/docintel?style=flat-square&color=7aa2f7)
+![Top Lang](https://img.shields.io/github/languages/top/mehtaaarush/docintel?style=flat-square&color=1a1b27)
+
 </td>
-<td align="center" width="33%">
-<a href="https://github.com/mehtaaarush/uav-gps-free-localization">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=mehtaaarush&repo=uav-gps-free-localization&theme=tokyonight&hide_border=true" width="100%"/>
-</a>
+<td width="33%" valign="top">
+
+**[🛰️ GPS-Free UAV Localization](https://github.com/mehtaaarush/uav-gps-free-localization)**
+Camera-only drone navigation matching aerial frames to a satellite map — no GPS.
+`Python` `PyTorch` `DINOv2` `FAISS`
+
+![Stars](https://img.shields.io/github/stars/mehtaaarush/uav-gps-free-localization?style=flat-square&color=7aa2f7)
+![Top Lang](https://img.shields.io/github/languages/top/mehtaaarush/uav-gps-free-localization?style=flat-square&color=1a1b27)
+
 </td>
 </tr>
 </table>
@@ -85,12 +100,10 @@
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=mehtaaarush&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" height="165"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mehtaaarush&layout=compact&theme=tokyonight&hide_border=true" height="165"/>
-
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=mehtaaarush&theme=tokyonight&hide_border=true" width="70%"/>
 
-<img src="https://github-profile-trophy.vercel.app/?username=mehtaaarush&theme=tokyonight&no-frame=true&row=1&column=6" width="90%"/>
+![Followers](https://img.shields.io/github/followers/mehtaaarush?style=for-the-badge&color=7aa2f7&labelColor=1a1b27)
+![Public Repos](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/mehtaaarush&label=Repos&query=%24.public_repos&style=for-the-badge&color=7aa2f7&labelColor=1a1b27)
 
 </div>
 
