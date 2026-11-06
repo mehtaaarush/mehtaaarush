@@ -143,15 +143,7 @@ Camera-only drone navigation matching aerial frames to a satellite map — no GP
 ![Followers](https://img.shields.io/github/followers/mehtaaarush?style=for-the-badge&color=7aa2f7&labelColor=1a1b27)
 ![Public Repos](https://img.shields.io/badge/dynamic/json?url=https://api.github.com/users/mehtaaarush&label=Repos&query=%24.public_repos&style=for-the-badge&color=7aa2f7&labelColor=1a1b27)
 
-<br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mehtaaarush/mehtaaarush/output/github-contribution-grid-snake-dark.gif" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mehtaaarush/mehtaaarush/output/github-contribution-grid-snake.gif" />
-  <img alt="contribution snake animation" src="https://raw.githubusercontent.com/mehtaaarush/mehtaaarush/output/github-contribution-grid-snake.gif" width="90%"/>
-</picture>
-
-<sub>Stats and snake regenerate from live GitHub data every 4 hours.</sub>
+<sub>Stats regenerate from live GitHub data every 4 hours.</sub>
 
 </div>
 
