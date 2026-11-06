@@ -24,6 +24,9 @@ jobs:
         uses: Platane/snk@v3
         with:
           github_user_name: mehtaaarush
+          # GITHUB_TOKEN only sees this repo, so the snake misses most activity.
+          # SNAKE_TOKEN (a personal token) lets it read the full public calendar.
+          github_token: ${{ secrets.SNAKE_TOKEN || secrets.GITHUB_TOKEN }}
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
@@ -31,8 +34,6 @@ jobs:
             dist/github-contribution-grid-snake-dark.gif?palette=github-dark
 
       - name: Generate contribution stats card
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .github/scripts/stats.py mehtaaarush dist
 
       - name: Push outputs to output branch
