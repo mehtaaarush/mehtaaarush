@@ -1,9 +1,9 @@
-"""Build contribution stats cards (light + dark SVG) from the GitHub GraphQL API.
+"""Build contribution stats cards (light + dark SVG) from the public contribution calendar.
 
 Counts the same contributions GitHub shows on the public profile calendar.
-Usage: GITHUB_TOKEN=... python stats.py <user> <out_dir>
+Usage: python stats.py <user> <out_dir>
 """
-import json
+import re
 import os
 import sys
 import urllib.request
@@ -11,44 +11,41 @@ from datetime import date, datetime, timedelta, timezone
 
 USER = sys.argv[1]
 OUT = sys.argv[2]
-TOKEN = os.environ["GITHUB_TOKEN"]
+
+# Read the public contribution calendar (exactly what the profile shows).
+# The Actions GITHUB_TOKEN only sees this one repository, so the API undercounts.
 
 
-def gql(query, variables):
-    req = urllib.request.Request(
-        "https://api.github.com/graphql",
-        data=json.dumps({"query": query, "variables": variables}).encode(),
-        headers={"Authorization": f"bearer {TOKEN}", "User-Agent": "profile-stats"},
-    )
+def fetch(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 profile-stats"})
     with urllib.request.urlopen(req) as r:
-        body = json.load(r)
-    if "errors" in body:
-        raise SystemExit(body["errors"])
-    return body["data"]
+        return r.read().decode("utf-8")
 
 
-created = gql("query($u:String!){user(login:$u){createdAt}}", {"u": USER})["user"]["createdAt"]
-start = datetime.fromisoformat(created.replace("Z", "+00:00")).date()
+def calendar(query=""):
+    html = fetch(f"https://github.com/users/{USER}/contributions{query}")
+    total = int(re.search(r"([\d,]+)\s+contributions?\s+in", html).group(1).replace(",", ""))
+    cells = {}
+    for tag in re.findall(r"<td[^>]*data-date=[^>]*>", html):
+        d = re.search(r'data-date="([\d-]+)"', tag).group(1)
+        lvl = int(re.search(r'data-level="(\d)"', tag).group(1))
+        cells[date.fromisoformat(d)] = lvl
+    return total, cells
+
+
 today = datetime.now(timezone.utc).date()
-
-CAL = """query($u:String!,$f:DateTime!,$t:DateTime!){user(login:$u){contributionsCollection(from:$f,to:$t){
-contributionCalendar{weeks{contributionDays{date contributionCount}}}}}}"""
-
-days = {}
-cur = start
-while cur <= today:
-    end = min(cur + timedelta(days=364), today)
-    data = gql(CAL, {"u": USER, "f": f"{cur}T00:00:00Z", "t": f"{end}T23:59:59Z"})
-    for w in data["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]:
-        for d in w["contributionDays"]:
-            days[date.fromisoformat(d["date"])] = d["contributionCount"]
-    cur = end + timedelta(days=1)
-
+last_year, days = calendar()
+year_totals = 0
+joined = int(re.search(r"(\d{4})", fetch(f"https://api.github.com/users/{USER}").split('"created_at"')[1]).group(1))
+for y in range(joined, today.year + 1):
+    t, cells = calendar(f"?from={y}-01-01&to={y}-12-31")
+    year_totals += t
+    for d, v in cells.items():
+        days.setdefault(d, v)
+all_time = year_totals
 ordered = sorted(days)
 year_ago = today - timedelta(days=365)
-last_year = sum(c for d, c in days.items() if d > year_ago)
 active_year = sum(1 for d, c in days.items() if d > year_ago and c > 0)
-all_time = sum(days.values())
 
 longest = run = 0
 for d in ordered:
