@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Generate contribution stats card
+        run: python .github/scripts/stats.py mehtaaarush dist
+
       - name: Prepare token
         env:
           RAW: ${{ secrets.SNAKE_TOKEN }}
@@ -48,13 +51,10 @@ jobs:
             dist/github-contribution-grid-snake.gif
             dist/github-contribution-grid-snake-dark.gif?palette=github-dark
 
-      - name: Generate contribution stats card
-        run: python .github/scripts/stats.py mehtaaarush dist
-
       - name: Keep previous snake if generation failed
         run: |
           for f in github-contribution-grid-snake.svg github-contribution-grid-snake-dark.svg github-contribution-grid-snake.gif github-contribution-grid-snake-dark.gif; do
-            [ -f "dist/$f" ] || curl -sfL "https://raw.githubusercontent.com/${{ github.repository }}/output/$f" -o "dist/$f" || true
+            [ -f "dist/$f" ] || sudo curl -sfL "https://raw.githubusercontent.com/${{ github.repository }}/output/$f" -o "dist/$f" || true
           done
 
       - name: Push outputs to output branch
