@@ -20,6 +20,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Prepare token
+        env:
+          RAW: ${{ secrets.SNAKE_TOKEN }}
+        run: |
+          T=$(printf '%s' "$RAW" | tr -d '
+	 ')
+          if [ -n "$T" ] && curl -sf -o /dev/null -H "Authorization: bearer $T" https://api.github.com/user; then
+            echo "::add-mask::$T"
+            echo "SNAKE_T=$T" >> "$GITHUB_ENV"
+            echo "SNAKE_TOKEN is valid"
+          else
+            echo "::warning::SNAKE_TOKEN missing or invalid; falling back to GITHUB_TOKEN"
+            echo "SNAKE_T=${{ secrets.GITHUB_TOKEN }}" >> "$GITHUB_ENV"
+          fi
+
       - name: Generate contribution snake
         uses: Platane/snk@v3
         continue-on-error: true
@@ -27,7 +42,7 @@ jobs:
           github_user_name: mehtaaarush
           # GITHUB_TOKEN only sees this repo, so the snake misses most activity.
           # SNAKE_TOKEN (a personal token) lets it read the full public calendar.
-          github_token: ${{ secrets.SNAKE_TOKEN || secrets.GITHUB_TOKEN }}
+          github_token: ${{ env.SNAKE_T }}
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
