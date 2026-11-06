@@ -22,6 +22,7 @@ jobs:
 
       - name: Generate contribution snake
         uses: Platane/snk@v3
+        continue-on-error: true
         with:
           github_user_name: mehtaaarush
           # GITHUB_TOKEN only sees this repo, so the snake misses most activity.
@@ -35,6 +36,12 @@ jobs:
 
       - name: Generate contribution stats card
         run: python .github/scripts/stats.py mehtaaarush dist
+
+      - name: Keep previous snake if generation failed
+        run: |
+          for f in github-contribution-grid-snake.svg github-contribution-grid-snake-dark.svg github-contribution-grid-snake.gif github-contribution-grid-snake-dark.gif; do
+            [ -f "dist/$f" ] || curl -sfL "https://raw.githubusercontent.com/${{ github.repository }}/output/$f" -o "dist/$f" || true
+          done
 
       - name: Push outputs to output branch
         uses: crazy-max/ghaction-github-pages@v4
