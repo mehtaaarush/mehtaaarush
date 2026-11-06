@@ -24,8 +24,7 @@ jobs:
         env:
           RAW: ${{ secrets.SNAKE_TOKEN }}
         run: |
-          T=$(printf '%s' "$RAW" | tr -d '
-	 ')
+          T=$(printf '%s' "$RAW" | tr -d '[:space:]')
           if [ -n "$T" ] && curl -sf -o /dev/null -H "Authorization: bearer $T" https://api.github.com/user; then
             echo "::add-mask::$T"
             echo "SNAKE_T=$T" >> "$GITHUB_ENV"
