@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="150" viewBox="0 0 880 150">
+<rect x="0.5" y="0.5" width="879" height="149" rx="10" fill="#0d1117" stroke="#30363d"/>
+<style>text{font-family:"Segoe UI",Ubuntu,Helvetica,Arial,sans-serif;text-anchor:middle}</style>
+<text x="110.0" y="66" font-size="34" font-weight="700" fill="#7aa2f7">646</text>
+<text x="110.0" y="96" font-size="15" font-weight="600" fill="#e6edf3">Contributions</text>
+<text x="110.0" y="116" font-size="12" fill="#8b949e">last 365 days</text>
+<line x1="220" y1="28" x2="220" y2="122" stroke="#30363d"/>
+<text x="330.0" y="66" font-size="34" font-weight="700" fill="#7aa2f7">84</text>
+<text x="330.0" y="96" font-size="15" font-weight="600" fill="#e6edf3">Active days</text>
+<text x="330.0" y="116" font-size="12" fill="#8b949e">last 365 days</text>
+<line x1="440" y1="28" x2="440" y2="122" stroke="#30363d"/>
+<text x="550.0" y="66" font-size="34" font-weight="700" fill="#7aa2f7">11</text>
+<text x="550.0" y="96" font-size="15" font-weight="600" fill="#e6edf3">Current streak</text>
+<text x="550.0" y="116" font-size="12" fill="#8b949e">days</text>
+<line x1="660" y1="28" x2="660" y2="122" stroke="#30363d"/>
+<text x="770.0" y="66" font-size="34" font-weight="700" fill="#7aa2f7">18</text>
+<text x="770.0" y="96" font-size="15" font-weight="600" fill="#e6edf3">Longest streak</text>
+<text x="770.0" y="116" font-size="12" fill="#8b949e">days</text>
+<text x="866" y="140" font-size="10" fill="#8b949e" style="text-anchor:end">updated 07 Nov 2026 17:13 UTC · 651 all-time</text>
+</svg>
